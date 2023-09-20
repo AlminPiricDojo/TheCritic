@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+    <!-- We set 'view_episode_title' to equal the episode id because we need the id in our JS function -->
+    <h3 id="view_episode_title">{{episode_id}}</h3>
+    <hr>
+    <div id="episode_info"></div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/app.js') }}"></script>
+</html>

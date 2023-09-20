@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+    <h3 id="title">The Critic</h3>
+    <div>
+        <form id="fetch_data_form">
+            <input type="text" id="show_search">
+            <input type="submit" value="Fetch Data">
+            <hr>
+        </form>
+    </div>
+    <div id="show_results">
+        <div id="shows"></div>
+    </div>
+    <div id="show_details">
+        <div id="show_data"></div>
+    </div>
+    <div id="episode_results">
+        <div id="episodes"></div>
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/app.js') }}"></script>
+</html>
