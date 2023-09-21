@@ -27,8 +27,10 @@ async function selectShow(showId){ // Display details of the selected show
     var showData = await response.json(); // Convert data to JSON
     var showImage = showData.image; // Get show image (if it exists)
 
-    document.getElementById("fetch_data_form").innerHTML = ""; // Remove search form
-    document.getElementById("show_results").innerHTML = ""; // Remove show search results
+    if(fetch_form = document.getElementById("fetch_data_form")){ // Only execute if on the index page
+        document.getElementById("fetch_data_form").innerHTML = ""; // Remove search form
+        document.getElementById("show_results").innerHTML = ""; // Remove show search results
+    }
 
     // Display show details (name, summary, and a link that displays all episodes when clicked by calling the 'showEpisoded' function)
     document.getElementById("show_details").innerHTML = `
@@ -40,6 +42,10 @@ async function selectShow(showId){ // Display details of the selected show
     // If a show does not have an image, we skip this part
     if(showImage!=null){ // Some shows do not have images
         document.getElementById("show_details").innerHTML += `<img src="`+showData.image.medium+`"/>`
+    }
+
+    if(fetch_form = document.getElementById("fetch_data_form")){ // Only execute if on the index page
+        document.getElementById("show_details").innerHTML += `<div><a href="/shows/`+showData.id+`/reviews">See Reviews</a></div>`
     }
 }
 
@@ -92,6 +98,12 @@ async function viewEpisode(episodeId){ // Display episode info
     document.getElementById("episode_info").innerHTML += `
         <p><a href="/episodes/`+(episodeData.id-1)+`">Prev</a> | <a href="/episodes/`+(episodeData.id+1)+`">Next</a></p>
     `
+}
+
+// SHOW REVIEWS ONLY
+
+if(document.getElementById("hidden_show_id")){ // Only execute if on the show reviews page
+    selectShow(document.getElementById("hidden_show_id").value) // We call the 'selectShow' function and pass in the show id, which we get from the hidden input
 }
 
 // TODO

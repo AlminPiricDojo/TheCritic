@@ -7,10 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
 </head>
 <body>
+    <div>
+        <a href="/">HOME</a>
+    </div>
     <!-- We set 'view_episode_title' to equal the episode id because we need the id in our JS function -->
     <h3 id="view_episode_title">{{episode_id}}</h3>
     <hr>
     <div id="episode_info"></div>
+    <div><a href="/episodes/{{episode_id}}/reviews">See Reviews</a></div>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='/js/app.js') }}"></script>
 </html>

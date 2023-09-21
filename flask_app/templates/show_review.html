@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+    <div>
+        <a href="/">HOME</a>
+    </div>
+    <input type="hidden" id="hidden_show_id" value="{{show_id}}">
+    <div id="show_details">
+        <div id="show_data"></div>
+    </div>
+    <br>
+    <h3>Reviews:</h3>
+    <hr>
+    <div>
+        <form action="/shows/{{show_id}}/reviews" method="POST">
+            <input type="text" name="content" placeholder="Your review goes here">
+            <input type="number" name="rating" placeholder="Rating (1-10)">
+            <input type="text" name="reviewer" placeholder="Your name">
+            <input type="submit" name="Submit" value="Submit Review">
+        </form>
+    </div>
+    <hr>
+    {% if show_reviews %}
+        {% for review in show_reviews %}
+            <h4>{{review.reviewer}} gave this show a {{review.rating}}/10 with the following review:</h4>
+            <p>{{review.content}}</p>
+        {% endfor %}
+    {% else %}
+        <p>No one has reviewed this show yet</p>
+    {% endif %}
+    <br>
+    <div id="episode_results">
+        <div id="episodes"></div>
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/app.js') }}"></script>
+</html>
